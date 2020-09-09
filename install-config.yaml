@@ -1,0 +1,90 @@
+apiVersion: v1
+baseDomain: blue.osp.opentlc.com
+imageContentSources:
+- mirrors:
+  - utilityvm.example.com:5000/ocp-release/release
+  source: quay.io/openshift-release-dev/ocp-release
+- mirrors:
+  - utilityvm.example.com:5000/ocp-release/release
+  source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
+compute:
+- architecture: amd64
+  hyperthreading: Enabled
+  name: worker
+  platform: {}
+  replicas: 0
+controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
+  name: master
+  platform: {}
+  replicas: 3
+metadata:
+  creationTimestamp: null
+  name: cluster-9b4a
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 192.168.47.0/24
+  networkType: OpenShiftSDN
+  serviceNetwork:
+  - 172.30.0.0/16
+platform:
+  openstack:
+    apiVIP: 192.168.47.5
+    cloud: 9b4a-project
+    computeFlavor: 4c16g30d
+    externalDNS: null
+    externalNetwork: external
+    ingressVIP: 192.168.47.7
+    lbFloatingIP: 52.116.95.138
+    octaviaSupport: "1" #disbale?
+    region: ""
+    trunkSupport: "0" #disable for upi
+publish: External
+pullSecret: '{       "auths": {              "cloud.openshift.com": {                        "auth":
+  "b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K3JobmxqZW5raW4xcWZ2OWt6NmVraDFqcG9xanJyeXNsZHZ3Z2M6TEFHQjZRREtGUEFHUjFJSjUwU0xPMFhPOTY0RUdFNVpVMUkzQ1dJSjNIS0lGUFdJQTJYVUdGUThDQ0RJOFJEQg=="              },              "quay.io":
+  {                    "auth": "b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K3JobmxqZW5raW4xcWZ2OWt6NmVraDFqcG9xanJyeXNsZHZ3Z2M6TEFHQjZRREtGUEFHUjFJSjUwU0xPMFhPOTY0RUdFNVpVMUkzQ1dJSjNIS0lGUFdJQTJYVUdGUThDQ0RJOFJEQg=="              },              "registry.connect.redhat.com":
+  {                        "auth": "NTE0NTA3MjZ8dWhjLTFRZlY5S3o2RWtoMWpQb1FqUnJZc0xEVldHYzpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSXpNRFpqTURFeFptVmxOelEwTm1FeU9EaGhPVGN3TldSbFpqY3lORFU1TWlKOS5rUGlBU09CdlU3RmZpa1lpLXVsWThzamxmbWZqR2UxVm5ldl9RbFdJNmotVENoa2lCcjhPaTJWS0ZLcmRjVE95OU5KdlJ4MXR4cDE0YTlRZVktclFqamlpb1YzSE5WTlVSbjJoZlJqSFRGQUwzRkY3QmppNmMxY082RkxkSF96bUpxdmxnbVhfVXM0eWxseVVMdDJkN3VtRmplMVNVd3JrNzZGckZKTFVla1E3MTFaZnIxWmxMV3I2TXZOVUI0dEp5bEhFSlVLWUR3NzRtS0tTVzduVElfdTF4SXdxYk4tZHVlcW9WRkJpS3oxMmppX05najhTblJoc0tlYU9aR1VoNlFjaFFVSmVrUVlrNzl1OUZwVXhuWGZXVTFMU08xN3ozN09uMlk3RHRkY2F0aHNxdnJnWlRBZzB2SF9pemh6aFptWHBEd01pekhPdnZ2My0zVDlxM2NHbjB0Q0FqeGdCNDJmSEpRclczTHItMXZxcmF2eUVuQUVZbVp0UkNyY1I2alI1cW0zU0RoQmNOUVhfSEZhNUVDNVJmWjRMbG1CTTFZM0FCUU93Y01lZHc2TS1MajVvNU5TRWxqZFNPLTd0WVRacnpfT3VWZmdzUERINVZuQjVyTDZVSTFqeXByU3NHbVpnTnljV1NpU0pGc3A2bTVUZnkweTJCc1ZVSjRXYVU3eXNwaUpZaHNPM05teHd5U25tUmxRbDlXRWNCLVhhLUstMnZWNnpVZ1FBdVpZWUc3MHp1cUhxUHUxdUVGWVR2eVZxWjkwXzlVLWtWVzk3VzRxSi00bFRUWnN5aWZxbnp5SlJ1MmpwUWZJVk5BUVJVaTZKVkZ0cERsQWItbU4yM3J5bnkwZ080WVllWUlPemd3eG4zS0gzVnBYU2M1YUxjWk53REpJU25Mbw=="              },              "registry.redhat.io":
+  {                 "auth": "NTE0NTA3MjZ8dWhjLTFRZlY5S3o2RWtoMWpQb1FqUnJZc0xEVldHYzpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSXpNRFpqTURFeFptVmxOelEwTm1FeU9EaGhPVGN3TldSbFpqY3lORFU1TWlKOS5rUGlBU09CdlU3RmZpa1lpLXVsWThzamxmbWZqR2UxVm5ldl9RbFdJNmotVENoa2lCcjhPaTJWS0ZLcmRjVE95OU5KdlJ4MXR4cDE0YTlRZVktclFqamlpb1YzSE5WTlVSbjJoZlJqSFRGQUwzRkY3QmppNmMxY082RkxkSF96bUpxdmxnbVhfVXM0eWxseVVMdDJkN3VtRmplMVNVd3JrNzZGckZKTFVla1E3MTFaZnIxWmxMV3I2TXZOVUI0dEp5bEhFSlVLWUR3NzRtS0tTVzduVElfdTF4SXdxYk4tZHVlcW9WRkJpS3oxMmppX05najhTblJoc0tlYU9aR1VoNlFjaFFVSmVrUVlrNzl1OUZwVXhuWGZXVTFMU08xN3ozN09uMlk3RHRkY2F0aHNxdnJnWlRBZzB2SF9pemh6aFptWHBEd01pekhPdnZ2My0zVDlxM2NHbjB0Q0FqeGdCNDJmSEpRclczTHItMXZxcmF2eUVuQUVZbVp0UkNyY1I2alI1cW0zU0RoQmNOUVhfSEZhNUVDNVJmWjRMbG1CTTFZM0FCUU93Y01lZHc2TS1MajVvNU5TRWxqZFNPLTd0WVRacnpfT3VWZmdzUERINVZuQjVyTDZVSTFqeXByU3NHbVpnTnljV1NpU0pGc3A2bTVUZnkweTJCc1ZVSjRXYVU3eXNwaUpZaHNPM05teHd5U25tUmxRbDlXRWNCLVhhLUstMnZWNnpVZ1FBdVpZWUc3MHp1cUhxUHUxdUVGWVR2eVZxWjkwXzlVLWtWVzk3VzRxSi00bFRUWnN5aWZxbnp5SlJ1MmpwUWZJVk5BUVJVaTZKVkZ0cERsQWItbU4yM3J5bnkwZ080WVllWUlPemd3eG4zS0gzVnBYU2M1YUxjWk53REpJU25Mbw=="              },              "utilityvm.example.com:5000":
+  {                 "auth": "b3BlbnNoaWZ0OnJlZGhhdA=="              }       }}'
+sshKey: |
+  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDaXwWxNsoBmJX0CUYlhG3W/jT3w/nzg53rGKlrrT0TA+5CK+C9az2FiDwlOPF/k9IipZNcpi50T4sH6WdTb+QZY5G3mqeqbV5tgJUfOlXrCetYISamwjyDjGHAVCRTNMyHDB4Ld/t6OIQvZYHTzcbq/7qHrzIIlq2r3VL7xemWe5QTqCpnFCiJOjdIinc+rBBC5qXtrkxnnG3av+TeZcv4GnDuDXQ3t+X/vPtremDkK6ZmrE7daUgNnerAkLSkvs81/9O+GEBqnwABL2TD36z+7IQ3u3ID67mv/PhIsPJDQB8BqDfkClDoDfqh30EAQfA6bpxkQUsFpuMU4d5UBr9N opentlc-mgr@admin.na.shared.opentlc.com
+additionalTrustBundle: |
+  -----BEGIN CERTIFICATE-----
+  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
+  jgl7QLhc32LhO4xBIFFcOD6Bm4Lvg1kDjdqleOM=
+  -----END CERTIFICATE-----
