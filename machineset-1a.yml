@@ -1,0 +1,55 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  labels:
+    machine.openshift.io/cluster-api-cluster: cluster-9b4a-ncht9
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+  name: general-purpose-1a
+  namespace: openshift-machine-api
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: cluster-9b4a-ncht9
+      machine.openshift.io/cluster-api-machineset: general-purpose-1a
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        machine.openshift.io/cluster-api-cluster: cluster-9b4a-ncht9
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: general-purpose-1a
+    spec:
+      metadata:
+        labels:
+          failure-domain.beta.kubernetes.io/region: "east"
+          failure-domain.beta.kubernetes.io/zone: "1a"
+          node-role.kubernetes.io/general-use: ""
+      providerSpec:
+        value:
+          apiVersion: openstackproviderconfig.openshift.io/v1alpha1
+          cloudName: openstack
+          cloudsSecret:
+            name: openstack-cloud-credentials
+            namespace: openshift-machine-api
+          flavor: 4c12g30d
+          image: rhcos-ocp45
+          kind: OpenstackProviderSpec
+          networks:
+          - filter: {}
+            subnets:
+            - filter:
+                name: '9b4a-ocp-subnet'
+          securityGroups:
+          - filter: {}
+            name: '9b4a-worker_sg'
+          serverMetadata:
+            Name: cluster-9b4a-ncht9-worker
+            openshiftClusterID: cluster-9b4a-ncht9
+          tags:
+          - openshiftClusterID=cluster-9b4a-ncht9
+          trunk: false
+          userDataSecret:
+            name: worker-user-data
